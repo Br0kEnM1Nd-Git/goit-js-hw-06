@@ -14,15 +14,19 @@ const images = [
 ];
 
 const parentUl = document.querySelector(".gallery");
-const newUl = document.createElement("ul");
+// const newUl = document.createElement("ul");
 
-images.forEach(({ url, alt }) => {
-  const newLi = document.createElement("li");
-  const newImg = document.createElement("img");
-  newImg.src = url;
-  newImg.alt = alt;
-  newLi.appendChild(newImg);
-  newUl.appendChild(newLi);
-});
+// images.forEach(({ url, alt }) => {
+//   const newLi = document.createElement("li");
+//   const newImg = document.createElement("img");
+//   newImg.src = url;
+//   newImg.alt = alt;
+//   newLi.appendChild(newImg);
+//   newUl.appendChild(newLi);
+// });
 
-parentUl.insertAdjacentHTML("afterbegin", newUl.innerHTML);
+const markup = images
+  .map(({ url, alt }) => `<li><img src="${url}"; alt="${alt}"></img></li>`)
+  .join("");
+
+parentUl.insertAdjacentHTML("afterbegin", markup);
