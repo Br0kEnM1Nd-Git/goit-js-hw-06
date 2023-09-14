@@ -25,6 +25,7 @@ let height = 30;
 let width = 30;
 function createBoxes() {
   if (value > 0) {
+    let markup = "";
     for (let i = 0; i < value; i += 1) {
       const newDiv = document.createElement("div");
       newDiv.style.height = `${height}px`;
@@ -33,8 +34,10 @@ function createBoxes() {
       width += 10;
       const bgColor = getRandomHexColor();
       newDiv.style.backgroundColor = `${bgColor}`;
-      parentBox.append(newDiv);
+      markup += newDiv.outerHTML;
+      // parentBox.append(newDiv);
     }
+    parentBox.innerHTML = markup;
   } else {
     alert("Введіть число від 1 до 100");
   }
